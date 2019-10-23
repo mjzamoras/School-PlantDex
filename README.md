@@ -7,7 +7,6 @@ Symbols :
     '@'  -In Progress
     '!'  -Subject For Change
     '+'  -New
-    '{}' -Prioritize
 
 TODO:
 
@@ -17,25 +16,25 @@ TODO:
 
 BACK-END:
 
-  (*) Setup Server
-  (@) Create and Implement Database Structure
-  (+) Develop WEB API or WEB Service that will act as medium between client and server
-  (+)
+  (*) -Setup Server
+  (@) -Create and Implement Database Structure
+  (+) -Develop WEB API or WEB Service that will act as medium between client and server
 
 
 
 FRONT-END:
 
-  (+) Create Wireframes
-  (+) Develop Android Application
+  (+) -Create Wireframes
+  (+) -Develop Android Application
 
 
 
 
 IMAGE CLASSIFIER MODULE:
 
-  (@) {  Successfully Install Necessary Python Modules         (tensorflow) }
-  (+) 
+  (@) -Successfully Install Necessary Python Modules         (tensorflow) 
+  (+) -Collect Training Data
+  (+) -Train the Module
   
   
 
