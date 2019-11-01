@@ -15,9 +15,15 @@ namespace PlantDexAPI
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "PlantDexAdminAPI",
+                routeTemplate: "api/PlantDexAdmin/{controller}/{action}",
+                defaults: new { action = RouteParameter.Optional, controller="AdminMode" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "PlantDexAPI",
+                routeTemplate: "api/PlantDex/{controller}/{action}",
+                defaults: new { action = RouteParameter.Optional, controller="ClientFunctions"}
             );
         }
     }
