@@ -9,5 +9,10 @@ namespace PlantDexAPI.Controllers
 {
     public class AdminModeController : ApiController
     {
+        [HttpPost]
+        public void InsertNewPlantID()
+        {
+
+        }
     }
 }
