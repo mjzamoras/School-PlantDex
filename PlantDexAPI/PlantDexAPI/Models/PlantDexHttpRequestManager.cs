@@ -42,6 +42,35 @@ namespace PlantDexAPI.Models
             
         }
 
+        public static PlantDexHttpResponse InsertAdminAccount(AdminAccount account)
+        {
+            PlantDexHttpResponse response = new PlantDexHttpResponse();
+            response.status = "FAIL";
+            response.message = "WEB API ERROR";
+            try
+            {
+                SqlConnection con = ConnectionManager.GetConnection();
+                SqlCommand com = new SqlCommand("INSERT INTO Admins( FirstName, MI, LastName, Username, Password, timestamp, encoded_by) VALUES( @FirstName, @MI, @LastName, @Username, @Password, @timestamp, @encoded_by)", con);
+                com.Parameters.AddWithValue("@FirstName", account.FirstName);
+                com.Parameters.AddWithValue("@MI", account.MI);
+                com.Parameters.AddWithValue("@LastName", account.LastName);
+                com.Parameters.AddWithValue("@Username", account.Username);
+                com.Parameters.AddWithValue("@Password", account.Password);
+                com.Parameters.AddWithValue("@timestamp", account.timestamp);
+                com.Parameters.AddWithValue("@encoded_by", account.encoded_by);
+                com.ExecuteNonQuery();
+
+                response.status = "SUCCESS";
+                response.message = "Successfully Added Admin Account";
+            }
+            catch (Exception ex)
+            {
+                response.message = ex.Message;
+            }
+
+            return response;
+        }
+
         private static string Hash(string rawDigest)
         {
             string newDigest = null;

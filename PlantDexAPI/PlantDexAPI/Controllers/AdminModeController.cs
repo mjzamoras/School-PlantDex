@@ -29,7 +29,37 @@ namespace PlantDexAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, "success");
+            return Request.CreateResponse(HttpStatusCode.OK, RunRequestedCommand(request.command, request.data));
         }
+
+        [NonAction]
+        private PlantDexHttpResponse RunRequestedCommand(string command, List<Object> data)
+        {
+            PlantDexHttpResponse response = new PlantDexHttpResponse();
+            response.status = "FAIL";
+            response.message = "UNKNOWN COMMAND : " + command;
+            switch (command)
+            {
+                case "InsertAdminAccount":
+                    {
+                        try
+                        {
+                            AdminAccount account = (AdminAccount)data[0];
+                            response = PlantDexHttpRequestManager.InsertAdminAccount(account);
+                        }
+                        catch (Exception ex)
+                        {
+                            response.status = "FAIL";
+                            response.message = ex.Message;
+                        }
+                        return response;
+                    }
+                default:
+                    {
+                        return response;
+                    }
+            }
+        }
+
     }
 }
