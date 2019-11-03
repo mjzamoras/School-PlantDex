@@ -50,14 +50,14 @@ namespace PlantDexAPI.Models
             try
             {
                 SqlConnection con = ConnectionManager.GetConnection();
-                SqlCommand com = new SqlCommand("INSERT INTO Admins( FirstName, MI, LastName, Username, Password, timestamp, encoded_by) VALUES( @FirstName, @MI, @LastName, @Username, @Password, @timestamp, @encoded_by)", con);
+                SqlCommand com = new SqlCommand("INSERT INTO Admins( FirstName, MI, LastName, Username, Password, timestamp, encoded_by) VALUES( @FirstName, @MI, @LastName, @Username, CAST(@Password as binary), @timestamp, @encoded_by)", con);
                 com.Parameters.AddWithValue("@FirstName", account.FirstName);
                 com.Parameters.AddWithValue("@MI", account.MI);
                 com.Parameters.AddWithValue("@LastName", account.LastName);
                 com.Parameters.AddWithValue("@Username", account.Username);
                 com.Parameters.AddWithValue("@Password", account.Password);
                 com.Parameters.AddWithValue("@timestamp", account.timestamp);
-                com.Parameters.AddWithValue("@encoded_by", account.encoded_by);
+                com.Parameters.AddWithValue("@encoded_by", "0");
                 com.ExecuteNonQuery();
 
                 response.status = "SUCCESS";

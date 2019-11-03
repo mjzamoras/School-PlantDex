@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+using Newtonsoft.Json;
 using PlantDexAPI.Models;
 namespace PlantDexAPI.Controllers
 {
@@ -45,7 +46,7 @@ namespace PlantDexAPI.Controllers
                     {
                         try
                         {
-                            AdminAccount account;
+                            AdminAccount account = JsonConvert.DeserializeObject<AdminAccount>(data[0].ToString());
                             response = PlantDexHttpRequestManager.InsertAdminAccount(account);
                         }
                         catch (Exception ex)
