@@ -20,6 +20,7 @@ namespace PlantDexAPI.Controllers
             if (request == null)
             {
                 response.message = "Invalid Request Parameters";
+                response.data = request.data;
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
 
@@ -44,13 +45,13 @@ namespace PlantDexAPI.Controllers
                     {
                         try
                         {
-                            AdminAccount account = (AdminAccount)data[0];
+                            AdminAccount account;
                             response = PlantDexHttpRequestManager.InsertAdminAccount(account);
                         }
                         catch (Exception ex)
                         {
                             response.status = "FAIL";
-                            response.message = ex.Message;
+                            response.message = ex.Message + " - " + data[0];
                         }
                         return response;
                     }
