@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PlantDexAndroidApp</string>
+
+    <string name="Classify">Classify</string>
+    <string name="Search">Search</string>
+    <string name="Contribute">Contribute</string>
+    <string name="Map">Map</string>
+
 </resources>
