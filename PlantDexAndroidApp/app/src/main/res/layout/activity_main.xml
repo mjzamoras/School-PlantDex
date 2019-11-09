@@ -7,6 +7,7 @@
     android:id="@+id/activity_menu"
     tools:context=".MainActivity">
 
+
     <FrameLayout
         android:id="@+id/layout_frame"
         android:background="@color/colorWhite"
@@ -20,9 +21,11 @@
         android:id="@+id/navigationDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="end"
+        android:layout_gravity="start"
         app:headerLayout="@layout/nav_drawer_header"
         app:menu="@menu/nav_drawer_items"
+        app:itemIconTint="@color/nav_drawer_item_color"
+        app:itemTextColor="@color/nav_drawer_item_color"
         >
 
     </com.google.android.material.navigation.NavigationView>
