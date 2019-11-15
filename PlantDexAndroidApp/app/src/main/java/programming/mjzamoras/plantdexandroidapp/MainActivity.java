@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navView;
     private ActionBarDrawerToggle toggle;
 
+    private ClassifyFragment classifyFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         dl = (DrawerLayout) findViewById(R.id.activity_menu);
         fl = (FrameLayout) findViewById(R.id.layout_frame);
         toggle = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
+
 
         dl.addDrawerListener(toggle);
         toggle.syncState();
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id){
                     case R.id.nav_item_classify:
-                        Toast.makeText(MainActivity.this, "Classify", Toast.LENGTH_LONG).show();
+                        SetFragment(classifyFragment);
                         dl.closeDrawer(GravityCompat.START);
                         return true;
 
@@ -66,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        classifyFragment = new ClassifyFragment();
+
+
     }
 
     @Override
@@ -76,5 +86,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void SetFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.layout_frame, fragment);
+        transaction.commit();
     }
 }
