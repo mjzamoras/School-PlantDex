@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         classifyFragment = new ClassifyFragment();
 
-
     }
 
     @Override
