@@ -33,6 +33,7 @@
             this.addPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPlantIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,14 +54,17 @@
             this.addAdminToolStripMenuItem.Name = "addAdminToolStripMenuItem";
             this.addAdminToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.addAdminToolStripMenuItem.Text = "Add Admin";
+            this.addAdminToolStripMenuItem.Click += new System.EventHandler(this.addAdminToolStripMenuItem_Click);
             // 
             // addPlantToolStripMenuItem
             // 
             this.addPlantToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addImageToolStripMenuItem});
+            this.addImageToolStripMenuItem,
+            this.addPlantIDToolStripMenuItem});
             this.addPlantToolStripMenuItem.Name = "addPlantToolStripMenuItem";
             this.addPlantToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.addPlantToolStripMenuItem.Text = "Add Plant";
+            this.addPlantToolStripMenuItem.Click += new System.EventHandler(this.addPlantToolStripMenuItem_Click);
             // 
             // addImageToolStripMenuItem
             // 
@@ -74,12 +78,20 @@
             this.viewRequestsToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.viewRequestsToolStripMenuItem.Text = "View Requests";
             // 
+            // addPlantIDToolStripMenuItem
+            // 
+            this.addPlantIDToolStripMenuItem.Name = "addPlantIDToolStripMenuItem";
+            this.addPlantIDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addPlantIDToolStripMenuItem.Text = "Add Plant ID";
+            this.addPlantIDToolStripMenuItem.Click += new System.EventHandler(this.addPlantIDToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1302, 540);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Plant Dex Admin";
@@ -97,6 +109,7 @@
         private System.Windows.Forms.ToolStripMenuItem addPlantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewRequestsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPlantIDToolStripMenuItem;
 
     }
 }

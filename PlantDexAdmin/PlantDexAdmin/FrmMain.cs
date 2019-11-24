@@ -16,5 +16,29 @@ namespace PlantDexAdmin
         {
             InitializeComponent();
         }
+
+        private void addAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addPlantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addPlantIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearForms();
+           
+        }
+
+        private void ClearForms()
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+            }
+        }
     }
 }
