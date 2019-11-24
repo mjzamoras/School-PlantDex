@@ -30,7 +30,10 @@ namespace PlantDexAdmin
         private void addPlantIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClearForms();
-           
+            FrmAddPlant frm = new FrmAddPlant();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
         }
 
         private void ClearForms()

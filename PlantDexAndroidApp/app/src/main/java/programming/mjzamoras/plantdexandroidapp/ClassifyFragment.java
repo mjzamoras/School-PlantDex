@@ -190,7 +190,7 @@ public class ClassifyFragment extends Fragment {
     }
 
     private void SendClassifyRequest(){
-        
+
     }
 
     private void snapShot(){
