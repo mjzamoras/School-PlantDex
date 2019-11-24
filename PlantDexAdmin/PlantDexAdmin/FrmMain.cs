@@ -43,5 +43,14 @@ namespace PlantDexAdmin
                 frm.Close();
             }
         }
+
+        private void addImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearForms();
+            FrmAddPlantImage frm = new FrmAddPlantImage();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+        }
     }
 }

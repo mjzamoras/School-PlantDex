@@ -71,6 +71,7 @@
             this.addImageToolStripMenuItem.Name = "addImageToolStripMenuItem";
             this.addImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addImageToolStripMenuItem.Text = "Add Image";
+            this.addImageToolStripMenuItem.Click += new System.EventHandler(this.addImageToolStripMenuItem_Click);
             // 
             // viewRequestsToolStripMenuItem
             // 
