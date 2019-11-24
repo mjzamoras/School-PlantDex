@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
 
     private ClassifyFragment classifyFragment;
+    private MapFragment mapFragment;
+    private SearchFragment searchFragment;
+    private String reroute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         dl = (DrawerLayout) findViewById(R.id.activity_menu);
         fl = (FrameLayout) findViewById(R.id.layout_frame);
         toggle = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
+
 
 
         dl.addDrawerListener(toggle);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_item_map:
-                        Toast.makeText(MainActivity.this, "Map", Toast.LENGTH_LONG).show();
+                        SetFragment(mapFragment);
                         dl.closeDrawer(GravityCompat.START);
                         return true;
 
@@ -75,6 +79,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         classifyFragment = new ClassifyFragment();
+        mapFragment = new MapFragment();
+
+        try{
+            reroute = getIntent().getStringExtra("reroute").toString();
+
+            switch (reroute){
+                case "map":
+                    SetFragment(mapFragment);
+                    break;
+                case "classify":
+                    SetFragment(classifyFragment);
+                    break;
+            }
+        }catch (Exception ex){
+
+        }
 
     }
 
