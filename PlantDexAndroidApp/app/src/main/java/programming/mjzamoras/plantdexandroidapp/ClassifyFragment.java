@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
+import android.graphics.drawable.Drawable;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -38,6 +39,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -85,6 +87,7 @@ public class ClassifyFragment extends Fragment {
     private Handler bgHandler;
     private HandlerThread thread;
     private boolean resetPreview = false;
+    private Image capturedImage = null;
 
     TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
         @Override
@@ -138,13 +141,32 @@ public class ClassifyFragment extends Fragment {
         btnOpen = (Button) v.findViewById(R.id.btnOpen);
         btnReset = (Button) v.findViewById(R.id.btnReset);
 
+
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
 
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                snapShot();
+                String command = btnCapture.getText().toString();
+
+                if(command.toLowerCase().equals("capture")){
+                    snapShot();
+                    btnReset.setEnabled(true);
+                    btnCapture.setText("Classify");
+
+                    Drawable img = getContext().getResources().getDrawable( R.drawable.ic_backup_24px );
+                    img.setBounds( 0, 0, 81, 81 );
+                    btnCapture.setCompoundDrawables( null, img, null, null );
+
+                }else{
+                    btnCapture.setText("Capture");
+                    Drawable img = getContext().getResources().getDrawable( R.drawable.ic_save_24px );
+                    img.setBounds( 0, 0, 81, 81 );
+                    btnCapture.setCompoundDrawables( null, img, null, null );
+                }
+
+
             }
         });
 
@@ -154,6 +176,12 @@ public class ClassifyFragment extends Fragment {
                 createImagePreview();
                 btnReset.setEnabled(false);
                 btnCapture.setEnabled(true);
+
+                btnCapture.setText("Capture");
+
+                Drawable img = getContext().getResources().getDrawable( R.drawable.ic_save_24px );
+                img.setBounds( 0, 0, 81, 81 );
+                btnCapture.setCompoundDrawables( null, img, null, null );
             }
         });
 
@@ -190,24 +218,28 @@ public class ClassifyFragment extends Fragment {
             b.addTarget(r.getSurface());
             b.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
 
-            int rotation = 0;
+            int rotation = getActivity().getWindowManager().getDefaultDisplay().getRotation();
             b.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
 
-            file = new File(Environment.getExternalStorageDirectory() + "/pdex" + UUID.randomUUID().toString() + ".jpg");
+
+            file = new File(Environment.getExternalStorageDirectory() + "/Pictures/" + UUID.randomUUID().toString() + ".jpg");
             ImageReader.OnImageAvailableListener rListener = new ImageReader.OnImageAvailableListener() {
                 @Override
                 public void onImageAvailable(ImageReader reader) {
                     Image image = null;
                     try{
                         image = r.acquireLatestImage();
+                        capturedImage = image;
                         ByteBuffer byteBuffer = image.getPlanes()[0].getBuffer();
                         byte[] bytes = new byte[byteBuffer.capacity()];
                         byteBuffer.get(bytes);
                         save(bytes);
                     }catch (FileNotFoundException e){
                         e.printStackTrace();
+                        Log.d("FILE-CREATE", "ERROR - " + e.getLocalizedMessage());
                     }catch (IOException e){
                         e.printStackTrace();
+                        Log.d("FILE-CREATE", "ERROR - " + e.getLocalizedMessage());
                     }finally {
                         {
                             if(image != null){
@@ -217,6 +249,7 @@ public class ClassifyFragment extends Fragment {
                     }
                 }
                 private void save(byte[] bytes) throws IOException{
+                    Log.d("Save Filed", "Saving File");
                     OutputStream oStream = null;
                     try {
                         oStream =new FileOutputStream(file);
@@ -236,11 +269,7 @@ public class ClassifyFragment extends Fragment {
                 public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
                     Toast.makeText(getContext(), "Saved " + file, Toast.LENGTH_LONG).show();
-
                     //------------------------------------------
-                    btnReset.setEnabled(true);
-                    btnCapture.setEnabled(false);
-
                 }
             };
 
