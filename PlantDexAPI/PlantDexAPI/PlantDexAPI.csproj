@@ -141,6 +141,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminAccount.cs" />
+    <Compile Include="Models\ClassifyResponseObject.cs" />
     <Compile Include="Models\ConnectionManager.cs" />
     <Compile Include="Models\GlobalEssentials.cs" />
     <Compile Include="Models\PlantDexHttpRequest.cs" />

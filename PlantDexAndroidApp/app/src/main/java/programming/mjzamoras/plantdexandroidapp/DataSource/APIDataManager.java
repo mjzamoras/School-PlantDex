@@ -6,4 +6,6 @@ public class APIDataManager {
     public static String COMMAND = "";
     public static String AUTH_KEY = "UGxhbnREZXhDbGllbnQ=";     // base64 encoded
 
+    
+
 }

@@ -4,6 +4,7 @@ package programming.mjzamoras.plantdexandroidapp;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.graphics.ImageFormat;
@@ -20,6 +21,7 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -53,6 +56,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import programming.mjzamoras.plantdexandroidapp.Object.APIPlantIDResponse;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +66,7 @@ public class ClassifyFragment extends Fragment {
 
     private TextureView textureView;
     private Button btnCapture, btnOpen, btnReset;
+    private RelativeLayout rlLoading;
 
     public ClassifyFragment() {
         // Required empty public constructor
@@ -140,7 +146,7 @@ public class ClassifyFragment extends Fragment {
         btnCapture = (Button) v.findViewById(R.id.btnCapture);
         btnOpen = (Button) v.findViewById(R.id.btnOpen);
         btnReset = (Button) v.findViewById(R.id.btnReset);
-
+        rlLoading = (RelativeLayout) v.findViewById(R.id.rlLoading);
 
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
@@ -163,6 +169,7 @@ public class ClassifyFragment extends Fragment {
                     btnCapture.setText("Capture");
                     Drawable img = getContext().getResources().getDrawable( R.drawable.ic_save_24px );
                     img.setBounds( 0, 0, 81, 81 );
+                    SendClassifyRequest();
                     btnCapture.setCompoundDrawables( null, img, null, null );
                 }
 
@@ -182,7 +189,7 @@ public class ClassifyFragment extends Fragment {
                 Drawable img = getContext().getResources().getDrawable( R.drawable.ic_save_24px );
                 img.setBounds( 0, 0, 81, 81 );
                 btnCapture.setCompoundDrawables( null, img, null, null );
-                SendClassifyRequest();
+
             }
         });
 
@@ -191,6 +198,8 @@ public class ClassifyFragment extends Fragment {
 
     private void SendClassifyRequest(){
 
+        Intent resultIntent = new Intent(getContext(), ClassifyResultActivity.class);
+        startActivity(resultIntent);
     }
 
     private void snapShot(){
@@ -408,6 +417,26 @@ public class ClassifyFragment extends Fragment {
             bgHandler = null;
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    class ClassifyImage extends AsyncTask<Void, Void, String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            rlLoading.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
         }
     }
 }
