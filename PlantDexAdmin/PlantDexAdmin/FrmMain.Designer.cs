@@ -28,59 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.addAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPlantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // menuStrip1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 540);
-            this.panel1.TabIndex = 0;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addAdminToolStripMenuItem,
+            this.addPlantToolStripMenuItem,
+            this.viewRequestsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1302, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // label1
+            // addAdminToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(45, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Add Admin";
+            this.addAdminToolStripMenuItem.Name = "addAdminToolStripMenuItem";
+            this.addAdminToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.addAdminToolStripMenuItem.Text = "Add Admin";
             // 
-            // panel2
+            // addPlantToolStripMenuItem
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(193, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1109, 540);
-            this.panel2.TabIndex = 1;
+            this.addPlantToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addImageToolStripMenuItem});
+            this.addPlantToolStripMenuItem.Name = "addPlantToolStripMenuItem";
+            this.addPlantToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.addPlantToolStripMenuItem.Text = "Add Plant";
+            // 
+            // addImageToolStripMenuItem
+            // 
+            this.addImageToolStripMenuItem.Name = "addImageToolStripMenuItem";
+            this.addImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addImageToolStripMenuItem.Text = "Add Image";
+            // 
+            // viewRequestsToolStripMenuItem
+            // 
+            this.viewRequestsToolStripMenuItem.Name = "viewRequestsToolStripMenuItem";
+            this.viewRequestsToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.viewRequestsToolStripMenuItem.Text = "View Requests";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1302, 540);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Plant Dex Admin";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addAdminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPlantToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewRequestsToolStripMenuItem;
+
     }
 }
 
