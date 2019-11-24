@@ -182,10 +182,15 @@ public class ClassifyFragment extends Fragment {
                 Drawable img = getContext().getResources().getDrawable( R.drawable.ic_save_24px );
                 img.setBounds( 0, 0, 81, 81 );
                 btnCapture.setCompoundDrawables( null, img, null, null );
+                SendClassifyRequest();
             }
         });
 
         return v;
+    }
+
+    private void SendClassifyRequest(){
+        
     }
 
     private void snapShot(){

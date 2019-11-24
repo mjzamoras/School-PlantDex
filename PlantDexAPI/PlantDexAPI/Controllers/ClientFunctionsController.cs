@@ -21,6 +21,7 @@ namespace PlantDexAPI.Controllers
                 response.message = "Invalid Request Parameters Given!";
                 response.status = "Invalid Request";
                 response.data = null;
+                PlantDexHttpRequestManager.SaveRequest(request, "Invalid Request");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, response);
             }
 
@@ -29,10 +30,18 @@ namespace PlantDexAPI.Controllers
                 response.message = "UnAuthorized Request";
                 response.status = "Invalid Request";
                 response.data = null;
+                PlantDexHttpRequestManager.SaveRequest(request, "Invalid Request");
                 return Request.CreateResponse(HttpStatusCode.Unauthorized, response);
             }
-            
-            
+
+            PlantDexHttpRequestManager.SaveRequest(request, "PENDING");
+            response.message = "SUCCESS";
+            response.status = "SUCCESS";
+            List<Object> data = new List<Object>();
+            ClassifyResponseObject obj = new ClassifyResponseObject();
+            obj.plantID = "1";
+            data.Add(obj);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
         }
 
 

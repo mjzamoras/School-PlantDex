@@ -71,11 +71,19 @@ namespace PlantDexAPI.Models
             return response;
         }
 
-        public static void SaveRequest(PlantDexHttpRequest request)
+        public static void SaveRequest(PlantDexHttpRequest request, string status)
         {
             try
             {
                 SqlConnection con = ConnectionManager.GetConnection();
+                SqlCommand com = new SqlCommand("INSERT INTO HttpRequests(RequestSource, RequestCommand, RequestLevel, timestamp, RequestStatus) VALUES(@RequestSource, @RequestCommand, @RequestLevel, GETDATE(), @RequestStatus)", con);
+                com.Parameters.AddWithValue("@RequestSource", request.source);
+                com.Parameters.AddWithValue("@RequestCommand", request.command);
+                com.Parameters.AddWithValue("@RequestLevel", request.commandLevel);
+                com.Parameters.AddWithValue("@RequestStatus", status);
+                com.ExecuteNonQuery();
+
+                con.Close();
             }
             catch (Exception ex)
             {
