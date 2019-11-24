@@ -71,6 +71,18 @@ namespace PlantDexAPI.Models
             return response;
         }
 
+        public static void SaveRequest(PlantDexHttpRequest request)
+        {
+            try
+            {
+                SqlConnection con = ConnectionManager.GetConnection();
+            }
+            catch (Exception ex)
+            {
+               
+            }
+        }
+
         private static string Hash(string rawDigest)
         {
             string newDigest = null;
