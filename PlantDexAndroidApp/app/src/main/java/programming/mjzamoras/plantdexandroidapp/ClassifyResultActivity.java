@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -43,7 +44,8 @@ public class ClassifyResultActivity extends AppCompatActivity implements Results
 
     @Override
     public void select(APIPlantIDResponse plant) {
-        Toast.makeText(ClassifyResultActivity.this, plant.getPlantID(), Toast.LENGTH_LONG).show();
+        Intent resultIntent = new Intent(ClassifyResultActivity.this, ClassifyResultDetailsActivity.class);
+        startActivity(resultIntent);
     }
 
     public void setResponse(List<APIPlantIDResponse> response) {
