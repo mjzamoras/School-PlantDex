@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_item_search:
-                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_LONG).show();
+                        SetFragment(searchFragment);
                         dl.closeDrawer(GravityCompat.START);
                         return true;
 
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         classifyFragment = new ClassifyFragment();
         mapFragment = new MapFragment();
+        searchFragment = new SearchFragment();
 
         try{
             reroute = getIntent().getStringExtra("reroute").toString();
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "classify":
                     SetFragment(classifyFragment);
+                    break;
+                case "search":
+                    SetFragment(searchFragment);
                     break;
             }
         }catch (Exception ex){
