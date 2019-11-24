@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchDetailsActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlPlantDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/holder"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/img"
+                    android:id="@+id/txtPlantID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="ID : pdex-109"
+                    />
+                <TextView
+                    android:layout_below="@id/txtPlantID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/txtPlantID"
+                    android:layout_alignStart="@id/txtPlantID"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="pdex-109 : Allium Cepa\nName : Onion\nRarity : Legendary\nUse : Eat It\nEffect : STR +1"
+                    />
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlImages"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/rlPlantDetails"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        >
+
+        <TextView
+            android:id="@+id/lblImages"
+            android:layout_marginTop="5dp"
+            android:text="Location : "
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/lblImages"
+            android:background="@color/colorFadedWhite"
+            android:scaleType="fitXY"
+            android:src="@drawable/mapholder" />
+
+        <TextView
+            android:layout_below="@id/mapView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Detailed Information, documentation and analysis of said plant"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

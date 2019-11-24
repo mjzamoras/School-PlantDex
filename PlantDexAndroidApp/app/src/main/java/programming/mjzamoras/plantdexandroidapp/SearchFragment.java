@@ -1,6 +1,7 @@
 package programming.mjzamoras.plantdexandroidapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -57,13 +58,15 @@ public class SearchFragment extends Fragment implements ResultsAdapter.ResultsAc
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvResults.setLayoutManager(linearLayoutManager);
         adapter = new ResultsAdapter(this);
+        rvResults.setAdapter(adapter);
         adapter.setResults(response);
+
 
         return v;
     }
 
     @Override
     public void select(APIPlantIDResponse plant) {
-        Toast.makeText(getContext(), plant.getPlantID(), Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getContext(), SearchDetailsActivity.class));
     }
 }
