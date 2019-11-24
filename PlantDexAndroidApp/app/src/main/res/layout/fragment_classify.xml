@@ -5,13 +5,59 @@
     android:layout_height="match_parent"
     tools:context=".ClassifyFragment">
 
-    <FrameLayout
-        android:id="@+id/camera_container"
+    <TextureView
+        android:id="@+id/textureView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"
-
+        android:layout_above="@id/btnCapture"
         />
+    
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:text="Capture"
+        android:drawableTop="@drawable/ic_save_24px"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnCapture"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:background="@color/White"
+        android:drawableTop="@drawable/ic_input_24px"
+        android:layout_alignParentBottom="true"
+        android:text="@string/Open"
+        android:id="@+id/btnOpen"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:enabled="false"
+        android:id="@+id/btnReset"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:text="Reset"
+        android:drawableTop="@drawable/ic_delete_24px"
+        android:background="@color/White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
 
 </RelativeLayout>

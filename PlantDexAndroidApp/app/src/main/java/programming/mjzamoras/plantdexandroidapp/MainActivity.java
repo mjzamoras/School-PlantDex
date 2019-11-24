@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     default:
+
                         dl.closeDrawer(GravityCompat.START);
                         return true;
                 }
