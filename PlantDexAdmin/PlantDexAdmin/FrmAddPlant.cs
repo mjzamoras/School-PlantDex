@@ -70,7 +70,19 @@ namespace PlantDexAdmin
                 }
 
                 SqlConnection con = ConnectionManager.GetConnection();
-                SqlCommand com = new SqlCommand("INSERT INTO PlantID(ScientificName, timestamp, encoded_by, CommonName) VALUES(@ScientificName, GETDATE(), 'sysgen', @CommonName) SELECT SCOPE_IDENTITY()", con);
+                SqlCommand com = new SqlCommand("SELECT * FROM SummarizedPlantData WHERE ScientificName = @name", con);
+                com.Parameters.AddWithValue("@name", scientificName);
+                using (SqlDataReader read = com.ExecuteReader())
+                {
+                    if (read.HasRows)
+                    {
+                        MessageBox.Show("Addition Failed : Plant Already Exists in Database!");
+                        return;
+                    }
+                }
+                
+                con.Close();
+                com = new SqlCommand("INSERT INTO PlantID(ScientificName, timestamp, encoded_by, CommonName) VALUES(@ScientificName, GETDATE(), 'sysgen', @CommonName) SELECT SCOPE_IDENTITY()", con);
                 com.Parameters.AddWithValue("@ScientificName", scientificName);
                 com.Parameters.AddWithValue("@CommonName", commonName);
                 string i = com.ExecuteScalar().ToString();
@@ -87,6 +99,13 @@ namespace PlantDexAdmin
                 con.Close();
 
                 MessageBox.Show("Successfully Saved Plant!");
+
+                txtScientificName.Text = "";
+                txtCommonName.Text = "";
+                txtColor.Text = "";
+                txtEdible.Text = "";
+                txtRarity.Text = "";
+                txtSize.Text = "";
             }
             catch (Exception ex)
             {
